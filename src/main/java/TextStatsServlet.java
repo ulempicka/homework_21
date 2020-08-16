@@ -14,27 +14,25 @@ public class TextStatsServlet extends HttpServlet {
         response.setContentType("txt/html");
         PrintWriter writer = response.getWriter();
 
-        writer.println("<h3>Wpisany przez Ciebie tekst:</h3>");
         writer.println("<p>" + text + "</p>");
-        writer.println("<h3>Statystyki tekstu:</h3>");
-        writer.println("<p>Liczba wszystkich znaków w tekście: " + text.length() + "</p>");
+        writer.println("<h1>Ilość znaków: " + text.length() + "</h1>");
 
         int countCharsWithoutSpaces = 0;
         for(int i = 0; i < text.length(); i++) {
             if(text.charAt(i) != ' ')
                 countCharsWithoutSpaces++;
         }
-        writer.println("<p>Liczba wszystkich znaków bez spacji: " + countCharsWithoutSpaces + "</p>");
+        writer.println("<h1>Ilość znaków bez spacji: " + countCharsWithoutSpaces + "</h1>");
 
         String[] split = text.split(" ");
         int countWords = split.length;
-        writer.println("<p>Liczba wyrazów: " + countWords + "</p>");
+        writer.println("<h1>Ilość słów: " + countWords + "</h1>");
 
         String reversed = null;
         for(int i = text.length()-1; i >= 0; i--) {
              reversed += text.charAt(i);
         }
         boolean isPalindrome = reversed.equals(text);
-        writer.println("<p>Czy tekst jest palindromem? " + isPalindrome + "</p>");
+        writer.println("<h1>Palindrom: " + isPalindrome + "</h1>");
     }
 }
