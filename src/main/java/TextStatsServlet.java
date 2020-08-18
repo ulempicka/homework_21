@@ -11,7 +11,7 @@ public class TextStatsServlet extends HttpServlet {
         String text = request.getParameter("textFromUser");
 
         response.setCharacterEncoding("UTF-8");
-        response.setContentType("txt/html");
+        response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
 
         writer.println("<p>" + text + "</p>");
@@ -28,11 +28,12 @@ public class TextStatsServlet extends HttpServlet {
         int countWords = split.length;
         writer.println("<h1>Ilość słów: " + countWords + "</h1>");
 
-        String reversed = null;
+        String reversed = "";
         for(int i = text.length()-1; i >= 0; i--) {
              reversed += text.charAt(i);
         }
         boolean isPalindrome = reversed.equals(text);
+        writer.println("<h1>Odwrócony text: " + reversed + "</h1>");
         writer.println("<h1>Palindrom: " + isPalindrome + "</h1>");
     }
 }
