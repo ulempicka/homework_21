@@ -17,33 +17,28 @@ public class KilogramsServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
 
-        int kgToGrams = Integer.valueOf(kg) * 1000;
-        int kgToMg = Integer.valueOf(kg) * 1000 * 1000;
-        int gramsToKg = Integer.valueOf(g) / 1000;
-        int gramsToMg = Integer.valueOf(g) * 1000;
-        int mgToKg = Integer.valueOf(mg) / 1000000;
-        int mgToGram = Integer.valueOf(mg) / 1000;
+        double kgToGrams = Double.valueOf(kg) * 1000;
+        double kgToMg = Double.valueOf(kg) * 1000 * 1000;
+        double gramsToKg = Double.valueOf(g) / 1000;
+        double gramsToMg = Double.valueOf(g) * 1000;
+        double mgToKg = Double.valueOf(mg) / 1000000;
+        double mgToGram = Double.valueOf(mg) / 1000;
 
         writer.println("<h1>Podana wartość w przeliczeniu na:</h1>");
-        String quantity = null;
-        switch (quantity){
-            case "kg":
-                writer.println("<h2>kilogramy: " + kg +" </h2>");
-                writer.println("<h2>gramy: " + kgToGrams +" </h2>");
-                writer.println("<h2>miligramy: " + kgToMg +" </h2>");
-                break;
-            case "g":
-                writer.println("<h2>kilogramy: " + gramsToKg +" </h2>");
-                writer.println("<h2>gramy: " + g +" </h2>");
-                writer.println("<h2>miligramy: " + gramsToMg +" </h2>");
-                break;
-            case "mg":
-                writer.println("<h2>kilogramy: " + mgToKg +" </h2>");
-                writer.println("<h2>gramy: " + mgToGram +" </h2>");
-                writer.println("<h2>miligramy: " + mg +" </h2>");
-                break;
-            default:
-                writer.println("<h1>Wypełnij tylko jedno pole!</h1>");
+        if (kg != null && !kg.equals("")) {
+            writer.println("<h2>kilogramy: " + kg + " </h2>");
+            writer.println("<h2>gramy: " + kgToGrams + " </h2>");
+            writer.println("<h2>miligramy: " + kgToMg + " </h2>");
+        } else if (g != null && !g.equals("")) {
+            writer.println("<h2>kilogramy: " + gramsToKg + " </h2>");
+            writer.println("<h2>gramy: " + g + " </h2>");
+            writer.println("<h2>miligramy: " + gramsToMg + " </h2>");
+        } else if (mg != null && !mg.equals("")) {
+            writer.println("<h2>kilogramy: " + mgToKg + " </h2>");
+            writer.println("<h2>gramy: " + mgToGram + " </h2>");
+            writer.println("<h2>miligramy: " + mg + " </h2>");
+        } else {
+            writer.println("<h1>Wypełnij tylko jedno pole!</h1>");
         }
     }
 }
