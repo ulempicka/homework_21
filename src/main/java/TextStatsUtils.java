@@ -1,6 +1,6 @@
 import java.io.PrintWriter;
 
-public class TextStatsUtils {
+public final class TextStatsUtils {
 
     private TextStatsUtils() {
     }
