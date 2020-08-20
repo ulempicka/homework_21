@@ -11,15 +11,15 @@ public class MetersServlet extends HttpServlet {
         String m = request.getParameter("meters");
         String cm = request.getParameter("cm");
         String mm = request.getParameter("mm");
+        String[] paramValues = new String[]{m, cm, mm};
 
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
 
-        if ((m != null && !m.equals("") && cm != null && !cm.equals("") && mm != null && !mm.equals(""))
-                || (m != null && !m.equals("") && cm != null && !cm.equals(""))
-                || (cm != null && !cm.equals("") && mm != null && !mm.equals(""))
-                || (m != null && !m.equals("") && mm != null && !mm.equals(""))) {
+        int paramCount = UnitUtils.howManyFieldsFilled(paramValues);
+
+        if (paramCount > 1) {
             writer.println("<h1>Wypełnij tylko jedno pole!</h1>");
             return;
         }

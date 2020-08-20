@@ -11,15 +11,15 @@ public class KilogramsServlet extends HttpServlet {
         String kg = request.getParameter("kg");
         String g = request.getParameter("g");
         String mg = request.getParameter("mg");
+        String[] paramValues = new String[]{kg, g, mg};
 
         response.setCharacterEncoding("UTF-8");
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
 
-        if ((kg != null && !kg.equals("") && g != null && !g.equals("") && mg != null && !mg.equals(""))
-                || (kg != null && !kg.equals("") && g != null && !g.equals(""))
-                || (g != null && !g.equals("") && mg != null && !mg.equals(""))
-                || (kg != null && !kg.equals("") && mg != null && !mg.equals(""))) {
+        int paramCount = UnitUtils.howManyFieldsFilled(paramValues);
+
+        if (paramCount > 1) {
             writer.println("<h1>Wypełnij tylko jedno pole!</h1>");
             return;
         }
