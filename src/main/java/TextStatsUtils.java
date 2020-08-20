@@ -11,11 +11,7 @@ public final class TextStatsUtils {
     }
 
     public static void countCharsWithoutSpaces(String text, PrintWriter writer) {
-        int charsWithoutSpaces = 0;
-        for (int i = 0; i < text.length(); i++) {
-            if (text.charAt(i) != ' ')
-                charsWithoutSpaces++;
-        }
+        int charsWithoutSpaces = text.replaceAll(" ", "").length();
         writer.println("<h1>Ilość znaków bez spacji: " + charsWithoutSpaces + "</h1>");
     }
 
@@ -26,11 +22,10 @@ public final class TextStatsUtils {
     }
 
     public static void isPalindrome(String text, PrintWriter writer) {
-        String reversed = "";
-        for (int i = text.length() - 1; i >= 0; i--) {
-            reversed += text.charAt(i);
-        }
-        boolean isPalindrome = reversed.equals(text);
+        String textToLower = text.toLowerCase();
+        StringBuilder builder = new StringBuilder(textToLower);
+        StringBuilder reversed = builder.reverse();
+        boolean isPalindrome = reversed.equals(textToLower);
         writer.println("<h1>Odwrócony text: " + reversed + "</h1>");
         writer.println("<h1>Palindrom: " + isPalindrome + "</h1>");
     }
