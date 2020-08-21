@@ -17,7 +17,7 @@ public class KilogramsServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter writer = response.getWriter();
 
-        int paramCount = UnitUtils.howManyFieldsFilled(paramValues);
+        int paramCount = UnitUtils.countFilledParameters(paramValues);
 
         if (paramCount > 1) {
             writer.println("<h1>Wypełnij tylko jedno pole!</h1>");
